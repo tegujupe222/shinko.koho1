@@ -24,30 +24,51 @@ const chartConfig = {
     }
 };
 
+// グラフの色パレット（複数の選択肢に対応）
+const colorPalette = {
+    backgroundColor: [
+        'rgba(102, 126, 234, 0.8)',
+        'rgba(118, 75, 162, 0.8)',
+        'rgba(255, 159, 64, 0.8)',
+        'rgba(75, 192, 192, 0.8)',
+        'rgba(255, 99, 132, 0.8)',
+        'rgba(153, 102, 255, 0.8)',
+        'rgba(54, 162, 235, 0.8)',
+        'rgba(255, 206, 86, 0.8)',
+        'rgba(201, 203, 207, 0.8)',
+    ],
+    borderColor: [
+        'rgba(102, 126, 234, 1)',
+        'rgba(118, 75, 162, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(255, 99, 132, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(201, 203, 207, 1)',
+    ]
+};
+
 // グラフを作成する関数
 function createChart(canvasId, data) {
     const ctx = document.getElementById(canvasId);
     if (!ctx) return;
     
+    const labels = Object.keys(data.responses);
+    const values = Object.values(data.responses);
+    
     const chartData = {
-        labels: Object.keys(data.responses),
+        labels: labels,
         datasets: [{
             label: '回答数',
-            data: Object.values(data.responses),
-            backgroundColor: [
-                'rgba(102, 126, 234, 0.8)',
-                'rgba(118, 75, 162, 0.8)',
-                'rgba(255, 159, 64, 0.8)',
-                'rgba(75, 192, 192, 0.8)',
-                'rgba(255, 99, 132, 0.8)',
-            ],
-            borderColor: [
-                'rgba(102, 126, 234, 1)',
-                'rgba(118, 75, 162, 1)',
-                'rgba(255, 159, 64, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(255, 99, 132, 1)',
-            ],
+            data: values,
+            backgroundColor: labels.map((_, index) => 
+                colorPalette.backgroundColor[index % colorPalette.backgroundColor.length]
+            ),
+            borderColor: labels.map((_, index) => 
+                colorPalette.borderColor[index % colorPalette.borderColor.length]
+            ),
             borderWidth: 2
         }]
     };
@@ -64,12 +85,32 @@ function displayImprovements(elementId, improvements) {
     if (!element) return;
     
     element.innerHTML = '';
-    improvements.forEach(improvement => {
-        if (improvement && improvement.trim() !== '' && improvement.trim() !== '特になし' && improvement.trim() !== '特にありません。' && improvement.trim() !== 'なし') {
-            const li = document.createElement('li');
-            li.textContent = improvement;
-            element.appendChild(li);
-        }
+    const filteredImprovements = improvements.filter(improvement => {
+        const trimmed = improvement ? improvement.trim() : '';
+        return trimmed !== '' && 
+               trimmed !== '特になし' && 
+               trimmed !== '特にありません。' && 
+               trimmed !== 'なし' &&
+               trimmed !== '特に' &&
+               trimmed !== '　' &&
+               trimmed !== '特にありません' &&
+               trimmed !== '特にございません。' &&
+               trimmed !== '特にございません';
+    });
+    
+    if (filteredImprovements.length === 0) {
+        const li = document.createElement('li');
+        li.textContent = '特になし';
+        li.style.fontStyle = 'italic';
+        li.style.color = '#6c757d';
+        element.appendChild(li);
+        return;
+    }
+    
+    filteredImprovements.forEach(improvement => {
+        const li = document.createElement('li');
+        li.textContent = improvement;
+        element.appendChild(li);
     });
 }
 
@@ -110,4 +151,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 
