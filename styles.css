@@ -249,4 +249,106 @@ footer p {
     animation: fadeInUp 0.6s ease-out;
 }
 
+/* 総括セクション */
+.summary-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 40px 30px;
+    border-radius: 12px;
+    margin-top: 40px;
+}
+
+.summary-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.summary-block {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #667eea;
+}
+
+.summary-block h3 {
+    color: #667eea;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.summary-block p {
+    line-height: 1.8;
+    color: #495057;
+    margin-bottom: 10px;
+}
+
+.summary-block ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.summary-block ul li {
+    padding: 10px 0;
+    padding-left: 25px;
+    position: relative;
+    line-height: 1.8;
+    color: #495057;
+}
+
+.summary-block ul li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+}
+
+.summary-block.highlight {
+    border-left-color: #764ba2;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+}
+
+.summary-block.highlight h3 {
+    color: #764ba2;
+}
+
+.summary-block.conclusion {
+    border-left-color: #28a745;
+    background: linear-gradient(135deg, #f0fff4 0%, #e8f5e9 100%);
+}
+
+.summary-block.conclusion h3 {
+    color: #28a745;
+}
+
+.summary-block strong {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.summary-block.highlight strong {
+    color: #764ba2;
+}
+
+.summary-block.conclusion strong {
+    color: #28a745;
+}
+
+/* レスポンシブ対応（総括セクション） */
+@media (max-width: 768px) {
+    .summary-section {
+        padding: 25px 15px;
+    }
+
+    .summary-block {
+        padding: 20px 15px;
+    }
+
+    .summary-block h3 {
+        font-size: 1.1em;
+    }
+}
+
 
