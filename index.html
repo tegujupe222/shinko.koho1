@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>神港学園 オープンハイスクール・入試説明会 事後アンケート集計結果</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>神港学園</h1>
+            <h2>オープンハイスクール・入試説明会 事後アンケート集計結果</h2>
+            <p class="subtitle">教職員アンケート結果のまとめ</p>
+        </header>
+
+        <nav class="toc">
+            <h3>目次</h3>
+            <ul>
+                <li><a href="#session1">セッション1：実施形式について</a></li>
+                <li><a href="#session2">セッション2：内容・プログラムについて</a></li>
+                <li><a href="#session3">セッション3：運営体制について</a></li>
+                <li><a href="#session4">セッション4：自由記述</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- セッション1：実施形式について -->
+            <section id="session1" class="session">
+                <h2>セッション1：実施形式について</h2>
+                
+                <div class="question-block">
+                    <h3>1. 開催時期・回数（全6回）の適切性について</h3>
+                    <div class="chart-container">
+                        <canvas id="chart1"></canvas>
+                    </div>
+                    <div class="improvements">
+                        <h4>具体的な改善点</h4>
+                        <ul id="improvements1"></ul>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <h3>2. 情報発信（集客・告知）の方法について</h3>
+                    <div class="chart-container">
+                        <canvas id="chart2"></canvas>
+                    </div>
+                    <div class="improvements">
+                        <h4>強化すべき媒体や方法</h4>
+                        <ul id="improvements2"></ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- セッション2：内容・プログラムについて -->
+            <section id="session2" class="session">
+                <h2>セッション2：内容・プログラムについて</h2>
+                
+                <div class="question-block">
+                    <h3>3. オープンスクール（体験・見学型）の内容評価</h3>
+                    <div class="chart-container">
+                        <canvas id="chart3"></canvas>
+                    </div>
+                    <div class="improvements">
+                        <h4>追加したい「目玉企画」や、廃止してもよいと思う内容</h4>
+                        <ul id="improvements3"></ul>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <h3>4. 入試説明会（情報伝達型）の内容評価</h3>
+                    <div class="chart-container">
+                        <canvas id="chart4"></canvas>
+                    </div>
+                    <div class="improvements">
+                        <h4>その他改善点（入試説明会について）</h4>
+                        <ul id="improvements4"></ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- セッション3：運営体制について -->
+            <section id="session3" class="session">
+                <h2>セッション3：運営体制について</h2>
+                
+                <div class="question-block">
+                    <h3>5. 役割分担と負担感について</h3>
+                    <div class="chart-container">
+                        <canvas id="chart5"></canvas>
+                    </div>
+                    <div class="improvements">
+                        <h4>具体的な改善点（役割分担と負担感について）</h4>
+                        <ul id="improvements5"></ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- セッション4：自由記述 -->
+            <section id="session4" class="session">
+                <h2>セッション4：自由記述</h2>
+                
+                <div class="question-block">
+                    <h3>6. 神港学園の「強み」をさらに伝えるために、来年度挑戦してみたいこと</h3>
+                    <div class="free-text">
+                        <ul id="freeText"></ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>神港学園 オープンハイスクール・入試説明会 事後アンケート集計結果</p>
+            <p class="date">集計日: 2025年12月</p>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
